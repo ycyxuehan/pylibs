@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="data:image/ico;base64,aWNv">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <h3 style="text-align:center">Soraka微服务架构</h3>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="/getservice?type=html">服务列表</a></li>
+                    <li role="presentation" class="active"><a href="/process?type=html">任务列表</a></li>
+                </ul>
+            </nav>
+            <div class="row " style="">
+                <div class="col-md-12">
+                    <div class="alert alert-info" style="text-align:center;"><a href="{HREF}">服务{KEY}已启动(点击查看子任务列表)</a></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function refresh(auto) 
+        {
+            if (auto == 1){
+                window.location.reload(); 
+            }
+        }
+        process = document.getElementById('process');
+        if (process.innerHTML == '')
+        {
+            setTimeout('refresh(1)',1000); 
+        }
+    </script>	
+</html>

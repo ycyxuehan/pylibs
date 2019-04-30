@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="data:image/ico;base64,aWNv">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <h3 style="text-align:center">Soraka微服务架构</h3>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="/getservice">服务列表</a></li>
+                    <li role="presentation" class="active"><a href="/process">任务列表</a></li>
+                </ul>
+            </nav>
+            <div class="row " style="">
+                <div class="col-md-12">
+                    <div class="alert alert-info" style="text-align:center;"><h3 style="margin-top:-0px;">服务列表</h3></div>
+                </div>
+            </div>
+            <div class="row" style="">
+                <div class="col-md-3"><div class="alert alert-info">服务名</div></div>
+                <div class="col-md-3"><div class="alert alert-success">服务ID</div></div>
+                <div class="col-md-3"><div class="alert alert-success">启动人</div></div>
+                <div class="col-md-3"><div class="alert alert-success">操作</div></div>
+            </div>
+            {SERVICES}
+        </div>
+    </body>
+    <script type="text/javascript">
+    </script>	
+</html>

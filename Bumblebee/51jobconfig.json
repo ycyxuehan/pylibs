@@ -1,0 +1,65 @@
+{
+    "SCHEDULER":{
+        "jobpages":{
+            "origin":"http://www.51job.com/index.html",
+            "identity":"root",
+            "downloader":"bumblebee.downloader.html.base",
+            "downloader_config":{},
+            "expression":{
+                "element":"",
+                "value":"regex:"
+            },
+            "parser":"bumblebee.parser.xpath",
+            "storage":{
+                "html":"bumblebee.storage.html.file",
+                "result":"bumblebee.storage.data.mysql"
+            }
+        },
+        "joblist":{
+            "origin":"http://www.51job.com/index.html?curpage=[scheduler:jobpages]",
+            "identity":"son",
+            "parent":"jobpages",
+            "downloader":"bumblebee.downloader.htmldownloader",
+            "expression":{
+                "element":"",
+                "value":"regex:"
+            },
+            "parser":"bumblebee.parser.xpath",
+            "storage":{
+                "html":"bumblebee.storage.html.file"
+            }
+        },
+        "jobinfo":{
+            "origin":"[scheduler:joblist:1:20]",
+            "identity":"son",
+            "parent":"joblist",
+            "downloader":"bumblebee.downloader.html.advance",
+            "expression":{
+            },
+            "item":{
+                "title":{
+                    "expression":{
+                        "element":"",
+                        "value":"regex:"
+                    },
+                    "parser":""
+                },
+                "publish_date":{
+                    "parser":"bumblebee.parser.xpath"
+                },
+                "_cols":["title", "publish_data"]
+            }
+        }
+    },
+    "PARSER_EX" : {
+        "xpaser":"bumblebee.cmd:python /bing/script/parser.py:[HTML]:[FILENAME]",
+        "ypaser":"bumblebee.python:$MYPARSER:yparser:[HTML]:[FILENAME]"
+    },
+    "STORAGE_EX" : {
+        "mystorage":"bumblebee.cmd:python /bing/script/storage.py:[DATA]:[FILENAME]",
+        "xstorage":"bumblebee.python:/bing/script/storage.py:xstorage:[DATA]:[FILENAME]"
+    },
+    "ENV":{
+        "MYPARSER":"/bing/script/parser.py"
+    }
+}

@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="data:image/ico;base64,aWNv">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+        <body>
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <h3 style="text-align:center">Soraka微服务架构</h3>
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="/getservice?type=html">服务列表</a></li>
+                        <li role="presentation" class="active"><a href="/process?type=html">任务列表</a></li>
+                        <li role="presentation" class="active"><a href="/status?pid={PID}&type=html">任务{PID}状态信息</a></li>
+                    </ul>
+                </nav>
+                <div class="row " style="">
+                    <div class="col-md-12">
+                        <div class="alert alert-info" style="text-align:center;"><h3 style="margin-top:-0px;">服务资源信息</h3>
+                            <div style="width:30%; margin-left:70%;margin-top:-20px;">
+                                <span class="label label-info" >任务号:{PID}</span> <button id='autorefresh' onclick="refresh()" class="btn btn-xs">自动刷新</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="">
+                    <div class="col-md-4"><div class="alert alert-info">项目</div></div><div class="col-md-8"><div class="alert alert-success">值(Bytes)</div></div>
+                </div>
+                {MONITOR}
+            </div>
+        </body>
+    <script type="text/javascript">
+        function refreshpage() 
+        {
+            console.log(123);
+            button = document.getElementById('autorefresh');
+            if (button.innerText == '自动刷新')
+            {
+                window.location.reload(); 
+            }
+        }
+        function refresh()
+        {
+            button = document.getElementById('autorefresh');
+            console.log(button.innerText)
+
+            if (button.innerText == '自动刷新')
+            {
+                button.innerText = '手动刷新'
+            }
+            else
+            {
+                button.innerText = '自动刷新'
+            }
+            setTimeout('refreshpage()',1000); 
+
+        }
+    </script>
+</html>
